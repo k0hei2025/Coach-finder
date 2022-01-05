@@ -1,3 +1,3 @@
 <template>
-  <h2>w4iutsrhgfdjgoirfhjgrfhgoifdhgipfdhiogfhdiogh</h2>
+  <h2>Contact a Coach</h2>
 </template>
