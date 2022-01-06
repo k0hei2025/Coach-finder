@@ -10,16 +10,27 @@
 </router-link>
 </div>
 <ul>
-  <li v-for="i in getCoaches" v-bind:key="i.id">
-    {{i.firstName}}
-  </li>
+ 
+    <coach-item v-for="i in getCoaches" v-bind:key="i.id"
+    v-bind:id="i.id"
+     v-bind:first-name="i.firstName"
+     v-bind:last-name="i.lastName"
+     v-bind:hourly-rate="i.HourlyRate"
+     v-bind:areas="i.areas"
+      ></coach-item>
+ 
  
 </ul>
 </template>
 
 <script>
+import CoachItem from '../../components/CoachesItem.vue'
 import {mapGetters} from 'vuex'
 export default {
+   components:{
+      'coach-item': CoachItem
+   },
+
    computed:{
      ...mapGetters(['getCoaches'])
    }
