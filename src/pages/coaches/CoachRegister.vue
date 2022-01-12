@@ -1,5 +1,14 @@
 <template>
                <div>
-                              <h1> Register As A Coach </h1>
+                              <register-form></register-form>
                </div>
 </template>
+
+<script>
+import RegisterForm from '../../components/RegisterForm.vue'
+export default {
+               components:{
+                              RegisterForm
+               }
+}
+</script>

@@ -1,26 +1,54 @@
 <template>
-             <button v-if="mode===outline" class="greyish"><slot></slot></button>
-              <router-link to='linked' v-else-if="mode===inline"><button class="pruplish"><slot></slot></button></router-link>
+       
+             <button v-if="!link" v-bind:class="mode"><slot></slot></button>
+              <router-link v-else :to="linked" v-bind:class="mode" ><slot></slot></router-link>
 </template>
 
 <script>
 export default {
-               props:['mode , linked']
+               props:{
+                              mode:{
+                                             type : String,
+                                             required : false,
+                                             default : null
+                              },
+                              link:{
+                                             type : Boolean,
+                                             required: false,
+                                             default : false
+                              },
+                              linked: {
+                                             type: String,
+                                             required: false,
+                                             default: '/'
+                                      }
+                              
+               },
+             
 }
 </script>
 
 <style scoped>
 
-.greyish {
-               background-color: grey;
+.outline {
+               background-color: transparent;
                border-style:solid;
-               color: black;
+               border-color: #000957;
+               color: #000957;
+               text-decoration: none;
+               border-width: 1px;
+               padding: 8px 16px;
+               border-radius: .3rem;
 }
-.pruplish {
-               background-color: indigo;
+.inline {
+               background-color: #000957;
                border-style:solid;
                border-color: white;
                color: white;
+               text-decoration: none;
+               border-width: 1px;
+               padding: 9px 16px;
+               border-radius: .3rem;
 }
  
 </style>

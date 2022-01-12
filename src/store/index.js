@@ -11,7 +11,7 @@ const store = createStore({
           id: 1,
           firstName: 'Alex',
           lastName: 'corvous',
-          areas: ['front-end', 'backend'],
+          areas: ['frontend', 'backend'],
           description: 'Hi i am Alex when I was 12 I start Coding Because I love to develop Apps',
           HourlyRate: 45
         },
@@ -19,7 +19,7 @@ const store = createStore({
           id: 2,
           firstName: 'Xavior',
           lastName: 'Akaserx',
-          areas: ['Data Science', 'Machine Learning'],
+          areas: ['DataScience', 'MachineLearning'],
           description: 'I have 12 years of Teaching Experience I give you full responsibilty for your dataScience future',
           HourlyRate: 30
         }
