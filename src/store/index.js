@@ -23,7 +23,8 @@ const store = createStore({
           description: 'I have 12 years of Teaching Experience I give you full responsibilty for your dataScience future',
           HourlyRate: 30
         }
-      ]
+      ],
+      isSubmittedForm: false
 
     }
 

@@ -39,6 +39,10 @@ export default {
                border-width: 1px;
                padding: 8px 16px;
                border-radius: .3rem;
+               cursor: pointer;
+}
+.inline:hover{
+       background-color: #010635;
 }
 .inline {
                background-color: #000957;
@@ -48,6 +52,7 @@ export default {
                text-decoration: none;
                border-width: 1px;
                padding: 9px 16px;
+               cursor: pointer;
                border-radius: .3rem;
 }
  

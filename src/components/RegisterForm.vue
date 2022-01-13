@@ -1,7 +1,8 @@
 <template>
-          <div class="parent-container">
+        <form class="parent-container" v-on:submit.prevent="addCoachHandler(formData , isSubmitted)">
+                  
                <h1>Register as a coach now!</h1>
-        <form v-on:submit.prevent="submitHandler()">
+      
                <p>Firstname</p>
         
                  <input type='text' v-model="formData.firstName"/>
@@ -14,35 +15,37 @@
 
                  <p>Hourly Rate</p>
                  <input type='number' v-model="formData.HourlyRate" />
-                  <button type="submit">Submit</button>
-        </form>
+                
+       
 <p>Area of Expertise</p>
 
 <div class="form-control"> 
 
 <div style="display:flex">
-<input type="checkbox" id="frontend" value="frontend" v-model="this.formData.area.frontend"/>
+<input type="checkbox" id="frontend" value="frontend" v-model="formData.areas"/>
 <label for="frontend">frontend</label>
 </div>
 <div style="display:flex">
-<input type="checkbox" id="backend" value="backend" v-model="this.formData.area.backend" />
+<input type="checkbox" id="backend" value="backend" v-model="formData.areas" />
 <label for="backend">backend</label>
 </div>
 <div style="display:flex">
-<input type="checkbox" id="MachineLearning" value="MachineLearning"  v-model="this.formData.area.MachineLearning"/>
+<input type="checkbox" id="MachineLearning" value="MachineLearning"  v-model="formData.areas"/>
 <label for="MachineLearning">Machine Learning</label>
 </div>
 <div style="display:flex">
-<input type="checkbox" id="DataScience" value="DataScience" v-model="this.formData.area.DataScience" />
+<input type="checkbox" id="DataScience" value="DataScience" v-model="formData.areas" />
 <label for="DataScience">Data Science</label>
 </div>
 <base-button mode="inline">Register</base-button>
 </div>
-          </div>
+        </form>
 </template>
 
 <script>
-import BaseButton from '../components/BaseButton.vue'
+import {mapMutations , mapGetters} from 'vuex';
+import BaseButton from '../components/BaseButton.vue';
+
 export default {
         components:{
                        BaseButton
@@ -50,44 +53,26 @@ export default {
        
         data(){
                 return {
-                         areaAdd:[],
-                        formData:{
+                   
+                 formData:{
                                 firstName: '',
                                 lastName: '',
                                 description: '',
                                 HourlyRate: 0,
-                                area: {
-                                frontend:false,
-                                backend:false,
-                                MachineLearning:false,
-                                DataScience:false,
-                                }
+                                areas:[]
                         },
+                    
+                           
                    
                 }
         },
+                   computed:{
+                         ...mapGetters(['isSubmitted'])
+        },
+               
         methods:{
               
-
-         submitHandler(){
-             if(this.formData.area.frontend){
-                     this.areaAdd.push(this.formData.area.frontend)
-             }
-        
-             if(this.formData.area.backend){
-                     this.areaAdd.push(this.formData.area.backend)
-             }
-
-             if(this.formData.area.MachineLearning){
-                     this.areaAdd.push(this.formData.area.MachineLearning)
-             }
-
-             if(this.formData.area.DataScience){
-                     this.areaAdd.push(this.formData.area.DataScience)
-             }
-
-          console.log('values',this.formData , this.areaAdd)
-         }
+         ...mapMutations(['addCoachHandler'])
         }
 
         
