@@ -8,5 +8,8 @@ export default {
                isSubmitted(state) {
                               state.isSubmittedForm;
                               console.log(state.isSubmittedForm)
+               },
+               isErrorStates(state) {
+                              return state.isError
                }
 }

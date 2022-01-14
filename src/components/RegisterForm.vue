@@ -1,13 +1,13 @@
-<template>
-        <form class="parent-container" v-on:submit.prevent="addCoachHandler(formData , isSubmitted)">
+<template> 
+        <form class="parent-container" :class="{invalid:isErrorStates}" v-on:submit.prevent="addCoachHandler(formData , isSubmitted)">
                   
                <h1>Register as a coach now!</h1>
       
-               <p>Firstname</p>
-        
+               <p >Firstname</p>
+     
                  <input type='text' v-model="formData.firstName"/>
 
-                 <p>Lastname</p>
+                 <p >Lastname</p>
                  <input type='text' v-model="formData.lastName"/>
 
                  <p>Description</p>
@@ -66,9 +66,13 @@ export default {
                    
                 }
         },
+ 
+
                    computed:{
-                         ...mapGetters(['isSubmitted'])
+                         ...mapGetters(['isSubmitted','isErrorStates'])
         },
+
+    
                
         methods:{
               
@@ -116,6 +120,10 @@ textarea:focus{
  border-color: #000957;
  outline: none;
 
+}
+
+.invalid{
+        color: red;
 }
 
 

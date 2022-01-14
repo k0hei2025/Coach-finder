@@ -24,7 +24,8 @@ const store = createStore({
           HourlyRate: 30
         }
       ],
-      isSubmittedForm: false
+      isSubmittedForm: false,
+      isError: false
 
     }
 
