@@ -27,6 +27,9 @@ export default {
                                              message: data.message
                               })
                               console.log('contact Data', state.requests)
-               }
+               },
 
+               getCoachList(state, data) {
+                              state.coaches = data
+               }
 }

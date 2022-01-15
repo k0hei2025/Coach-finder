@@ -1,5 +1,5 @@
 <template> 
-        <form class="parent-container" :class="{invalid:isErrorStates}" v-on:submit.prevent="addCoachHandler(formData , isSubmitted)">
+        <form class="parent-container" :class="{invalid:isErrorStates}" v-on:submit.prevent="actionAddCoachHandler(formData)">
                   
                <h1>Register as a coach now!</h1>
       
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {mapMutations , mapGetters} from 'vuex';
+import {mapMutations , mapGetters , mapActions} from 'vuex';
 import BaseButton from '../components/BaseButton.vue';
 
 export default {
@@ -76,7 +76,8 @@ export default {
                
         methods:{
               
-         ...mapMutations(['addCoachHandler'])
+         ...mapMutations(['addCoachHandler']),
+         ...mapActions(['actionAddCoachHandler'])
         }
 
         

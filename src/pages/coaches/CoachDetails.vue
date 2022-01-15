@@ -36,9 +36,12 @@ components:{
 props:['id'],
 data(){
 return {
-  coachDetail : null
+  coachDetail : null,
+  data: []
 
 }},
+
+
 computed:{
                  ...mapGetters(['getCoaches']),
                  fullName(){
@@ -49,12 +52,42 @@ computed:{
                                },
 },
 created(){
-    console.log('dsfdsfds',this.id , this.getCoaches);   
-           this.coachDetail  =  this.getCoaches.find((i)=>i.id === Number(this.id));
+      
+          fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches.json`).then(e=>
+                              e.json()
+                              
+               ).then((resData)=>{
+                 console.log(resData);
+                              let coaches = [];
+                              for (let i in resData) {
+                                             coaches.push({
+                                                            id: resData[i].id,
+                                                            firstName: resData[i].firstName,
+                                                            lastName: resData[i].lastName,
+                                                            description: resData[i].description,
+                                                            HourlyRate: resData[i].HourlyRate,
+                                                            areas: resData[i].areas
+                                             })
+                              }
+                              console.log('flare',coaches);
+
+
+
+
+                              this.data =  coaches
+                            console.log( 'fdfdsf' ,this.data); 
+
+
+                            console.log('falre wfole file',this.id , this.data.id);   
+           this.coachDetail  =  this.data.find((i)=>i.id === Number(this.id));
+
+
+               })
+
+
+    
 },
-mounted() {
-          
-},
+
 }
 </script>
 

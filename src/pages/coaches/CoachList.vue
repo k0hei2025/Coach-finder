@@ -3,7 +3,8 @@
 
 <base-badge>
 <div class="btn"> 
-<base-button style="margin-left:5%" mode="outline">
+<base-button style="margin-left:5%" mode="outline" >
+
   Refresh
 </base-button>
 <router-link to='/register' style="textDecoration:none">
@@ -13,15 +14,15 @@
 </router-link>
 </div>
 <ul>
+   
  
-    <coach-item v-for="i in filteredCoaches" v-bind:key="i.id"
+    <coach-item v-for="i in data" v-bind:key="i.id"
     v-bind:id="i.id"
      v-bind:first-name="i.firstName"
      v-bind:last-name="i.lastName"
      v-bind:hourly-rate="i.HourlyRate"
      v-bind:areas="i.areas"
       ></coach-item>
- 
  
 </ul>
 </base-badge>
@@ -31,7 +32,7 @@
 import CoachItem from '../../components/CoachesItem.vue'
 import BaseBadge from '../../components/BaseBadge.vue'
 import BaseButton from '../../components/BaseButton.vue'
-import {mapGetters} from 'vuex'
+import {mapGetters } from 'vuex'
 import FilterCoach from './FilterCoaches.vue'
 export default {
 
@@ -42,8 +43,34 @@ export default {
           backend: true,
           MachineLearning:true,
           DataScience: true
-        }
+        },
+        data: []
     }
+  },
+  mounted(){
+      
+               fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches.json`).then(e=>
+                              e.json()
+                              
+               ).then((resData)=>{
+                 console.log(resData);
+                              let coaches = [];
+                              for (let i in resData) {
+                                             coaches.push({
+                                                            id: resData[i].id,
+                                                            firstName: resData[i].firstName,
+                                                            lastName: resData[i].lastName,
+                                                            description: resData[i].description,
+                                                            HourlyRate: resData[i].HourlyRate,
+                                                            areas: resData[i].areas
+                                             })
+                              }
+                              console.log('dsfsdfsd',coaches);
+
+                              this.data =  coaches
+                            console.log(this.data); 
+               })
+
   },
    components:{
       'coach-item': CoachItem,
@@ -54,6 +81,11 @@ export default {
 
    computed:{
      ...mapGetters(['getCoaches']),
+  
+     
+
+      
+     
      filteredCoaches(){
       return this.getCoaches.filter(i=>{
          if (this.activeFilters.frontend && i.areas.includes('frontend')){
@@ -72,11 +104,17 @@ export default {
        })       
      }
    },
+ 
    methods:{
      filterHandler(updatedFilter){
         console.log(updatedFilter , 'updatedSide')
         this.activeFilters = updatedFilter
-     }
+     },
+     listHandler(){
+       console.log('clicked')
+       
+       console.log('listCoahc',this.getCoachList)
+     },
    }
 }
 </script>
