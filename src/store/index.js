@@ -25,7 +25,10 @@ const store = createStore({
         }
       ],
       isSubmittedForm: false,
-      isError: false
+      isError: false,
+      requests: [
+
+      ]
 
     }
 

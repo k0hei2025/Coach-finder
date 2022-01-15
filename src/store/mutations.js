@@ -18,9 +18,15 @@ export default {
                                              console.log('error please fill fields correctly', state.isError)
                               }
 
-                              // console.log(state.coaches)
-                              // state.isSubmittedForm = true;
-                              // console.log('isSubmit', state.isSubmittedForm)
+               },
+
+               contactFormHandler(state, data) {
+                              state.requests.push({
+                                             id: state.requests.length + 1,
+                                             email: data.email,
+                                             message: data.message
+                              })
+                              console.log('contact Data', state.requests)
                }
 
 }

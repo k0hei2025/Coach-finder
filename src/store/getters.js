@@ -11,5 +11,9 @@ export default {
                },
                isErrorStates(state) {
                               return state.isError
+               },
+               getRequests(state) {
+                              return state.requests
                }
+
 }

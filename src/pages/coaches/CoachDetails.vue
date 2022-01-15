@@ -16,9 +16,7 @@
            
            <div class="contact">
              <p>Intrested? Reach out now!</p>
-          
-          <base-button mode="inline" link v-bind:linked='contactLink'>Contact</base-button>
-            
+             <contact-us></contact-us>
              </div>
               
            </div>
@@ -27,11 +25,13 @@
 <script>
 import {mapGetters} from 'vuex'
 import Areas from '../../components/Areas.vue';
-import BaseButton from '../../components/BaseButton.vue';                                   
+  
+import ContactUs from '../../components/ContactUs.vue'                               
 export default {
 components:{
   Areas,
-  BaseButton
+
+  ContactUs
 },
 props:['id'],
 data(){
@@ -65,7 +65,7 @@ mounted() {
                 width: 50%;
                 border-radius: 0.5rem;
                margin-left: 23%;
-               margin-top: 2rem;
+               margin-top: .5rem;
                padding: 1rem;
                color: #ffff;
                box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
@@ -101,13 +101,25 @@ mounted() {
    font-weight: bold;
  }
  .contact{
-   background-color: #ffff;
+   background-color: #FFC600;
    margin: 1rem;
    padding: 1rem 1rem 1rem 1rem;
+   border-radius: .5rem;
+   height: 19rem;
+   width: 70%;
+   margin-left: 7rem;
+   box-shadow: 4px 4px 8px 4px #000957;
+ 
+   
+ }
+ .contact:hover{
+   box-shadow: 8px 8px 20px 20px #fff;
  }
  .contact p{
    font-size: 28px;
-   color: #000957;
+   color: black;
+   /* font-weight: bold; */
    margin-top: 0px;
+   margin-bottom: 0px;
  }
 </style>

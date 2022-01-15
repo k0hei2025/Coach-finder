@@ -3,7 +3,7 @@
                   
                <h1>Register as a coach now!</h1>
       
-               <p >Firstname</p>
+               <p>Firstname</p>
      
                  <input type='text' v-model="formData.firstName"/>
 
