@@ -51,5 +51,29 @@ export default {
                               console.log(coaches)
 
 
+               },
+
+               async addContact(context, data) {
+
+
+                              const requestAdd = []
+
+                              const contactData = {
+                                             id: new Date().getTime(),
+                                             email: data.email,
+                                             message: data.message
+                              }
+                              console.log(`at action`, data)
+
+                              requestAdd.push(contactData)
+
+                              const JsonData = await fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches/${data.coachId}/requests.json`, {
+                                             method: 'POST',
+                                             body: JSON.stringify(contactData)
+                              })
+                              const resData = await JsonData.json();
+                              console.log(resData);
+
+                              context.commit(`contactFormHandler`, data)
                }
 }

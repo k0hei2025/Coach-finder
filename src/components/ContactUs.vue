@@ -1,5 +1,5 @@
 <template>
-        <form v-on:submit.prevent="contactFormHandler(contactFormData)" class="parent-container">
+        <form v-on:submit.prevent="addContact(contactFormData)" class="parent-container">
                        <p>Your E-mail</p>
                        <input type="text" v-model="contactFormData.email"/>
                        <p>Message</p>
@@ -10,20 +10,27 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations, mapActions} from 'vuex'
 export default {
             data(){
                     return{
                             contactFormData:{
+                            coachId : "",
                            email: "",
                            message: ""
                             }
                           
                     }
             },
+            props:['idStore'],
+            created(){
+                    this.contactFormData.coachId = this.idStore
+                  console.log(this.contactFormData ,  'idStore at contactUS component')
+            },
          
             methods:{
-                    ...mapMutations(['contactFormHandler'])
+                    ...mapMutations(['contactFormHandler']),
+                    ...mapActions(['addContact'])
 
             }   
 }

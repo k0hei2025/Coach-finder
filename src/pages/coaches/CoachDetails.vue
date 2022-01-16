@@ -16,7 +16,7 @@
            
            <div class="contact">
              <p>Intrested? Reach out now!</p>
-             <contact-us></contact-us>
+             <contact-us v-bind:idStore="idStore" ></contact-us>
              </div>
               
            </div>
@@ -37,7 +37,8 @@ props:['id'],
 data(){
 return {
   coachDetail : null,
-  data: []
+  data: [],
+  idStore: 0,
 
 }},
 
@@ -52,6 +53,9 @@ computed:{
                                },
 },
 created(){
+
+            this.idStore = this.id
+            console.log('idStore',this.idStore)
       
           fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches.json`).then(e=>
                               e.json()

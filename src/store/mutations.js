@@ -21,6 +21,7 @@ export default {
                },
 
                contactFormHandler(state, data) {
+
                               state.requests.push({
                                              id: state.requests.length + 1,
                                              email: data.email,
