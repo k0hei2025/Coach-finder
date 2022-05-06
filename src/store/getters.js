@@ -14,6 +14,13 @@ export default {
                },
                getRequests(state) {
                               return state.requests
+               },
+               authenticatedData(state) {
+                              return state.authenticateInformation
+               },
+               isOurUser(state) {
+                              return state.isOurUser
                }
+
 
 }

@@ -28,7 +28,12 @@ const store = createStore({
       isError: false,
       requests: [
 
-      ]
+      ],
+      authenticateInformation: {
+        idToken: '',
+        localId: ''
+      },
+      isOurUser: false
 
     }
 
