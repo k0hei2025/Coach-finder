@@ -6,11 +6,14 @@ import ContactCoach from './pages/requests/Contact.vue'
 import RequestRecived from './pages/requests/RequestRecived.vue'
 import NotFound from './pages/NotFound.vue'
 import Authentication from './pages/Authentication/index'
+import Home from './pages/home/home.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/coaches' },
+    // { path: '/', redirect: '/coaches' },
+    { path: '/', component: Home },
+
     { path: '/coaches', component: CoachList },
     {
       path: '/coaches/:id',

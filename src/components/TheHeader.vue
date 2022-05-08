@@ -1,18 +1,32 @@
 <template>
   <header class="buttonList">
     <nav>
-      <h1>Find a Coach</h1>
+      <router-link style="text-decoration: none; color: inherit" to="/"
+        ><h1 class="iconLogo">MENTOR</h1></router-link
+      >
       <ul>
-        <router-link style="textDecoration:none"  to="/coaches"><li>All Coaches</li></router-link>
-        <router-link style="textDecoration:none" to="/requests"><li>Requests</li></router-link>
+        <!-- <li class="list_2">Be a Mentor</li> -->
+        <router-link style="text-decoration: none" to="/coaches"
+          ><li>Find a Mentor</li></router-link
+        >
+        <router-link style="text-decoration: none" to="/auth">
+          <li class="list_1">Be a Mentor</li></router-link
+        >
+
+        <!-- <router-link style="textdecoration: none" to="/requests"
+          ><li>Requests</li></router-link
+        >
+         -->
       </ul>
     </nav>
   </header>
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Roboto:wght@100;300&display=swap');
+
 .buttonList h1 {
-  color: #ffff;
+  color: #000957;
   margin: 0;
   margin: 15px 0px 0px 60px;
   font-size: 32px;
@@ -25,26 +39,32 @@
   margin: 0rem 1rem;
   border-style: solid;
   border-width: 1px;
-  padding: 12px 18px;
-  background-color: transparent;
-  border-radius: 0.2rem;
-  border-color: #ffc900;
-  border-width: 2px;
+  padding: 12px 15px;
+  background-color: #000957;
+  border-radius: 1.5rem;
+
   cursor: pointer;
-  color: #ffc900;
+  color: #efead8;
+  font-weight: bold;
+  text-decoration: none;
   font-family: Roboto, Arial, sans-serif;
 }
 .buttonList li:hover {
   background-color: #ffc900;
   color: #000957;
-
 }
 .buttonList {
-  background-color: #000957;
+  background-color: ivory;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
 }
 .buttonList nav {
   display: flex;
   justify-content: space-between;
   padding: 20px 0px;
+}
+.iconLogo {
+  font-family: 'Luckiest Guy', cursive;
+  letter-spacing: 5px;
 }
 </style>

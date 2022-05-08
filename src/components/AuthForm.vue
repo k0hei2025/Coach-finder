@@ -153,10 +153,12 @@ export default {
   padding-top: 1rem;
   text-align: center;
   transition: all 0.2s;
+  margin-left: 39%;
+  padding: 3rem;
 }
 
 .auth:hover {
-  box-shadow: 0 1px 40px rgba(255, 255, 255, 0.95);
+  box-shadow: 0 1px 40px #000957;
   border: none;
 }
 
