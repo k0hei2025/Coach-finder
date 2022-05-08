@@ -116,6 +116,7 @@ export default {
           }
         );
         const resData = await signInAuthenticateUrl.json();
+        console.log(resData, 'resData');
         const { idToken, localId } = resData;
         this.addAuthenticateUserData({ idToken, localId });
         if (resData.error) {
@@ -126,7 +127,9 @@ export default {
           this.authenticationStatus.isSuccessful = true;
         }
         this.hasShowStatus = true;
-        this.$router.push('/');
+        if (localId) {
+          this.$router.push('/');
+        }
       }
     },
   },

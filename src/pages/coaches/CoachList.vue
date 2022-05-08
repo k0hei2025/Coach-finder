@@ -19,6 +19,7 @@
         v-bind:last-name="i.lastName"
         v-bind:hourly-rate="i.HourlyRate"
         v-bind:areas="i.areas"
+        v-bind:userId="i.userId"
       ></coach-item>
     </ul>
   </base-badge>
@@ -57,6 +58,7 @@ export default {
             description: resData[i].description,
             HourlyRate: resData[i].HourlyRate,
             areas: resData[i].areas,
+            userId: resData[i].userId,
           });
         }
         console.log('dsfsdfsd', coaches);

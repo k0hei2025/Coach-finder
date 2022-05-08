@@ -26,7 +26,7 @@ export default {
     Areas,
   },
 
-  props: ['id', 'firstName', 'lastName', 'hourlyRate', 'areas'],
+  props: ['id', 'firstName', 'lastName', 'hourlyRate', 'areas', 'userId'],
 
   computed: {
     fullName() {

@@ -30,12 +30,14 @@ export default {
         coachId: '',
         email: '',
         message: '',
+        userId: '',
       },
     };
   },
-  props: ['idStore'],
+  props: ['idStore', 'userId'],
   created() {
     this.contactFormData.coachId = this.idStore;
+    this.contactFormData.userId = this.userId;
     console.log(this.contactFormData, 'idStore at contactUS component');
   },
   computed: {
