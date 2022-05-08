@@ -16,6 +16,21 @@
     <p>Description</p>
     <textarea rows="5" v-model="formData.description" />
 
+    <p>Email</p>
+    <input type="text" v-model="formData.email" />
+
+    <p>PhoneNumber</p>
+    <input type="number" v-model="formData.phoneNumber" />
+
+    <p>Qualification</p>
+    <input type="text" v-model="formData.qualification" />
+
+    <p>Country</p>
+    <input type="text" v-model="formData.country" />
+
+    <p>State</p>
+    <input type="text" v-model="formData.state" />
+
     <p>Hourly Rate</p>
     <input type="number" v-model="formData.HourlyRate" />
 
@@ -78,6 +93,10 @@ export default {
         firstName: '',
         lastName: '',
         description: '',
+        country: '',
+        phoneNumber: 0,
+        state: '',
+        qualification: '',
         HourlyRate: 0,
         areas: [],
       },
@@ -88,9 +107,13 @@ export default {
     ...mapGetters(['isSubmitted', 'isErrorStates']),
   },
 
+  async created() {
+    this.userDataHandler();
+  },
+
   methods: {
     ...mapMutations(['addCoachHandler']),
-    ...mapActions(['actionAddCoachHandler']),
+    ...mapActions(['actionAddCoachHandler', 'userDataHandler']),
   },
 };
 </script>

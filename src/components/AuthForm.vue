@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex';
+import { mapMutations, mapGetters, mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -68,9 +68,21 @@ export default {
       hasShowStatus: false,
     };
   },
-
-  created() {
-    console.log('checking genere', this.isAMentor);
+  // async created() {
+  //   const data = await fetch(
+  //     `https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches/${this.authenticatedData.localId}/requests.json`
+  //   );
+  //   const resData = await data.json();
+  //   for (let i in resData) {
+  //     this.profileData.name = resData[i].firstName + ` ` + resData[i].lastName;
+  //     this.profileData.qualification = resData[i].qualification;
+  //     this.profileData.phoneNumber = resData[i].phoneNumber;
+  //     this.profileData.country = resData[i].country;
+  //     this.profileData.city = resData[i].city;
+  //   }
+  // },
+  async created() {
+    this.userDataHandler();
   },
   computed: {
     ...mapGetters(['authenticatedData', 'isAMentor']),
@@ -78,8 +90,10 @@ export default {
   mounted() {
     console.log('data from store', this.authenticatedData);
   },
+
   methods: {
     ...mapMutations(['addAuthenticateUserData', 'genereChangeHandler']),
+    ...mapActions(['userDataHandler']),
     switchAuthHandler() {
       this.hasShowStatus = false;
       this.isLogin = !this.isLogin;
@@ -143,7 +157,7 @@ export default {
         }
         this.hasShowStatus = true;
         if (localId) {
-          this.$router.push('/register');
+          // this.$router.push('/register');
         }
       }
     },

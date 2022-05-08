@@ -34,7 +34,9 @@ const store = createStore({
         localId: ''
       },
       isOurUser: false,
-      isMentor: false
+      isMentor: false,
+
+      profileData: {}
 
     }
 

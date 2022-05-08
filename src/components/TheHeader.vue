@@ -20,10 +20,18 @@
         <li v-if="authenticatedData.localId" v-on:click="logoutHandler">
           Logout
         </li>
+
         <router-link v-else style="text-decoration: none" to="/auth">
           <li class="list_1">Be a Mentor</li></router-link
         >
-        
+
+        <router-link
+          v-if="authenticatedData.localId"
+          style="text-decoration: none"
+          to="/teacherProfile"
+        >
+          <li class="list_1">{{ this.profileName }}</li></router-link
+        >
       </ul>
     </nav>
   </header>
@@ -77,12 +85,28 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
+  data() {
+    return {
+      profileName: '',
+    };
+  },
   computed: {
-    ...mapGetters(['authenticatedData']),
+    ...mapGetters(['authenticatedData', 'getUserData']),
+  },
+  async created() {
+    const data = await fetch(
+      `https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches/${this.authenticatedData.localId}.json`
+    );
+    const resData = await data.json();
+    for (let i in resData) {
+      this.profileName = resData[i].firstName;
+    }
   },
   methods: {
+    ...mapActions(['userDataHandler']),
+
     logoutHandler() {
       this.authenticatedData.localId = null;
       alert('logout');

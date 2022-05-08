@@ -23,6 +23,9 @@ export default {
                },
                isAMentor(state) {
                               return state.isMentor
+               },
+               getUserData(state) {
+                              return state.profileData
                }
 
 

@@ -10,6 +10,11 @@ export default {
         description: refObject.description,
         areas: refObject.areas,
         HourlyRate: refObject.HourlyRate,
+        phoneNumber: refObject.phoneNumber,
+        email: refObject.email,
+        country: refObject.country,
+        state: refObject.state,
+        qualification: refObject.qualification,
         userId: context.state.authenticateInformation.localId
       }
 
@@ -76,5 +81,19 @@ export default {
     console.log(resData);
 
     context.commit(`contactFormHandler`, data)
+  },
+
+  async userDataHandler(context) {
+    const data = await fetch(
+      `https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches/${this.authenticatedData.localId}/requests.json`
+    );
+    const resData = await data.json();
+    for (let i in resData) {
+      context.state.profileData.name = resData[i].firstName + ` ` + resData[i].lastName;
+      context.state.profileData.qualification = resData[i].qualification;
+      context.state.profileData.phoneNumber = resData[i].phoneNumber;
+      context.state.profileData.country = resData[i].country;
+      context.state.profileData.city = resData[i].city;
+    }
   }
 }
