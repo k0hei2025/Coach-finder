@@ -1,6 +1,6 @@
 <template>
   <div class="parentContainer">
-    <p class="upper_text">Learning today,Leading tommorow!</p>
+    <p class="upper_text">Learning today, Leading tommorow!</p>
     <p>We Connect Learners And Mentors at one place!</p>
   </div>
 </template>

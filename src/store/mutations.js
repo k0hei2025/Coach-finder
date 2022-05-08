@@ -40,5 +40,10 @@ export default {
     if (state.authenticateInformation.idToken) {
       state.isOurUser = true;
     }
+
+  },
+
+  genereChangeHandler(state) {
+    state.isMentor = !state.isMentor
   }
 }

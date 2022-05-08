@@ -1,6 +1,6 @@
 <template>
   <div class="containerWrapper">
-    <img class="HomeImage" src="../../pages/home/assets/img/about.jpg" />
+    <img class="HomeImage" src="../../pages/home/assets/about.jpg" />
   </div>
 </template>
 <style scoped>

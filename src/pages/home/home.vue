@@ -32,6 +32,7 @@ export default {
 
 <style scoped>
 .containerOfAnimate {
+  margin-top: 4rem;
   animation: zweep 2s alternate both;
 }
 @keyframes zweep {
@@ -40,7 +41,7 @@ export default {
   }
 
   100% {
-    transform: translateY(-3%);
+    transform: translateY(-5%);
   }
 }
 </style>

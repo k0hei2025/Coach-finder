@@ -33,7 +33,8 @@ const store = createStore({
         idToken: '',
         localId: ''
       },
-      isOurUser: false
+      isOurUser: false,
+      isMentor: false
 
     }
 

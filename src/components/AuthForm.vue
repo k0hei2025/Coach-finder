@@ -1,6 +1,18 @@
 <template>
   <body class="body">
     <section class="auth">
+      <div class="wrapperContainer">
+        <p
+          class="wrapperContent"
+          v-on:click="genereChangeHandler"
+          v-if="isAMentor"
+        >
+          Login as a Mentor
+        </p>
+        <p class="wrapperContent" v-on:click="genereChangeHandler" v-else>
+          Login as a Student
+        </p>
+      </div>
       <h3>Ready To Start Your Journey? You're in the right place</h3>
       <!-- <h1>{login ? 'Login' : 'Sign Up'}</h1> -->
       <form v-on:submit.prevent onSubmit="{submitHandler}">
@@ -31,7 +43,7 @@
             {{ isLogin ? 'Login' : 'Create Account' }}
           </button>
           <button v-on:click="switchAuthHandler">
-            {{ isLogin ? 'SignUp' : 'Login' }}
+            {{ isLogin ? 'go to SignUp' : ' go to Login' }}
           </button>
         </div>
       </form>
@@ -57,14 +69,17 @@ export default {
     };
   },
 
+  created() {
+    console.log('checking genere', this.isAMentor);
+  },
   computed: {
-    ...mapGetters(['authenticatedData']),
+    ...mapGetters(['authenticatedData', 'isAMentor']),
   },
   mounted() {
     console.log('data from store', this.authenticatedData);
   },
   methods: {
-    ...mapMutations(['addAuthenticateUserData']),
+    ...mapMutations(['addAuthenticateUserData', 'genereChangeHandler']),
     switchAuthHandler() {
       this.hasShowStatus = false;
       this.isLogin = !this.isLogin;
@@ -128,7 +143,7 @@ export default {
         }
         this.hasShowStatus = true;
         if (localId) {
-          this.$router.push('/');
+          this.$router.push('/register');
         }
       }
     },
@@ -137,6 +152,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital@1&family=Luckiest+Guy&family=Roboto:wght@100;300&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Akshar:wght@300&family=Lato&family=Poppins:wght@200&family=Roboto:wght@100;300&display=swap');
 
 .auth {
@@ -155,6 +172,7 @@ export default {
   transition: all 0.2s;
   margin-left: 39%;
   padding: 3rem;
+  overflow: hidden;
 }
 
 .auth:hover {
@@ -179,6 +197,8 @@ export default {
   height: 83vh;
   /* background-color: green; */
   font-weight: 900;
+  overflow: hidden;
+  padding: 5rem;
 }
 
 .auth h1 {
@@ -197,6 +217,7 @@ export default {
 
 .control {
   margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .control label {
@@ -263,5 +284,26 @@ export default {
 .actions.toggle:hover {
   background-color: transparent;
   color: black;
+}
+.wrapperContent {
+  color: ivory;
+  font-size: 18px;
+  position: relative;
+  top: 5px;
+  font-family: 'Asap', sans-serif;
+}
+.wrapperContainer {
+  background-color: #000957;
+  transform: rotate(40deg);
+  position: relative;
+
+  left: 30%;
+  height: 4vh;
+  transform: rotateZ(45deg) translateX(1rem) translateY(-2rem);
+  cursor: pointer;
+}
+.wrapperContainer:hover {
+  background-color: #99c4c8;
+  box-shadow: 2px 2px 4px 2px #000957;
 }
 </style>

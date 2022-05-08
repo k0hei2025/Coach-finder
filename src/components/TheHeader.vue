@@ -6,17 +6,24 @@
       >
       <ul>
         <!-- <li class="list_2">Be a Mentor</li> -->
-        <router-link style="text-decoration: none" to="/coaches"
-          ><li>Find a Mentor</li></router-link
-        >
-        <router-link style="text-decoration: none" to="/auth">
-          <li class="list_1">Be a Mentor</li></router-link
-        >
 
-        <!-- <router-link style="textdecoration: none" to="/requests"
+        <router-link
+          v-if="authenticatedData.localId"
+          style="textdecoration: none"
+          to="/requests"
           ><li>Requests</li></router-link
         >
-         -->
+        <router-link v-else style="text-decoration: none" to="/coaches"
+          ><li>Find a Mentor</li></router-link
+        >
+
+        <li v-if="authenticatedData.localId" v-on:click="logoutHandler">
+          Logout
+        </li>
+        <router-link v-else style="text-decoration: none" to="/auth">
+          <li class="list_1">Be a Mentor</li></router-link
+        >
+        
       </ul>
     </nav>
   </header>
@@ -68,3 +75,18 @@
   letter-spacing: 5px;
 }
 </style>
+
+<script>
+import { mapGetters } from 'vuex';
+export default {
+  computed: {
+    ...mapGetters(['authenticatedData']),
+  },
+  methods: {
+    logoutHandler() {
+      this.authenticatedData.localId = null;
+      alert('logout');
+    },
+  },
+};
+</script>

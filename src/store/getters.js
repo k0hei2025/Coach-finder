@@ -20,6 +20,9 @@ export default {
                },
                isOurUser(state) {
                               return state.isOurUser
+               },
+               isAMentor(state) {
+                              return state.isMentor
                }
 
 
