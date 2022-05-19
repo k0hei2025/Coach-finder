@@ -1,9 +1,25 @@
 <template>
   <div class="parent-container">
     <h1>Request Receieved</h1>
-    <div class="card" v-for="i in messageList" v-bind:key="i.id">
+    <div
+      v-on:click="messageHandler"
+      class="card"
+      v-for="i in messageList"
+      v-bind:key="i.id"
+    >
       <b>{{ i.email }}</b>
       <p>{{ i.message }}</p>
+      <div v-if="wantToSendMessage">
+        <input
+          v-if="authenticatedData.localId"
+          type="text"
+          v-model="message"
+          placeholder="Send Message"
+        />  
+        <button class="messageButtonHandler" v-on:click="submitHandler">
+          Send
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -13,6 +29,7 @@ export default {
   data() {
     return {
       messageList: [],
+      wantToSendMessage: false,
     };
   },
   computed: {
@@ -35,6 +52,14 @@ export default {
         this.messageList = tempArr;
       });
   },
+  methods: {
+    messageHandler() {
+      this.wantToSendMessage = true;
+    },
+    submitHandler(){
+      
+    }
+  },
 };
 </script>
 
@@ -50,6 +75,14 @@ export default {
 .parent-container h1 {
   text-align: center;
 }
+.messageButtonHandler {
+  color: ivory;
+  background-color: #000957;
+  font-weight: bold;
+  border-style: none;
+  margin: 5px;
+  cursor: pointer;
+}
 .card {
   margin: 1rem;
   border-style: solid;
@@ -59,6 +92,7 @@ export default {
   border-radius: 0.1rem;
   width: 70%;
   margin-left: 12rem;
+  cursor: pointer;
 }
 .card b {
   color: #000957;

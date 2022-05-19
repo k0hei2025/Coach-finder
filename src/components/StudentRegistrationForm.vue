@@ -7,7 +7,7 @@
     :class="{ invalid: isErrorStates }"
     v-on:submit.prevent="actionAddCoachHandler(formData)"
   >
-    <h1>Register as a coach now!</h1>
+    <h1>Register as a Student now!</h1>
 
     <p>Firstname</p>
 
@@ -16,17 +16,11 @@
     <p>Lastname</p>
     <input type="text" v-model="formData.lastName" />
 
-    <p>Description</p>
-    <textarea rows="5" v-model="formData.description" />
-
     <p>Email</p>
     <input type="text" v-model="formData.email" />
 
     <p>PhoneNumber</p>
     <input type="number" v-model="formData.phoneNumber" />
-
-    <p>Qualification</p>
-    <input type="text" v-model="formData.qualification" />
 
     <p>Country</p>
     <input type="text" v-model="formData.country" />
@@ -34,52 +28,7 @@
     <p>State</p>
     <input type="text" v-model="formData.state" />
 
-    <p>Hourly Rate</p>
-    <input type="number" v-model="formData.HourlyRate" />
-
-    <p>Area of Expertise</p>
-
-    <div class="form-control">
-      <div style="display: flex">
-        <input
-          type="checkbox"
-          id="STEM"
-          value="STEM"
-          v-model="formData.areas"
-        />
-        <label for="STEM">STEM</label>
-      </div>
-      <div style="display: flex">
-        <input
-          type="checkbox"
-          id="PerformingArts_visualArts"
-          value="Performing Arts/Visual Arts"
-          v-model="formData.areas"
-        />
-        <label for="PerformingArts/visualArts"
-          >Performing Arts/ visual Arts</label
-        >
-      </div>
-      <div style="display: flex">
-        <input
-          type="checkbox"
-          id="Sports"
-          value="Sports"
-          v-model="formData.areas"
-        />
-        <label for="Sports">Sports</label>
-      </div>
-      <div style="display: flex">
-        <input
-          type="checkbox"
-          id="Others"
-          value="Others"
-          v-model="formData.areas"
-        />
-        <label for="Others">Others</label>
-      </div>
-      <base-button mode="inline">Register</base-button>
-    </div>
+    <base-button mode="inline">Register</base-button>
   </form>
 </template>
 
@@ -97,13 +46,10 @@ export default {
       formData: {
         firstName: '',
         lastName: '',
-        description: '',
+        email: '',
         country: '',
         phoneNumber: 0,
         state: '',
-        qualification: '',
-        HourlyRate: 0,
-        areas: [],
       },
     };
   },

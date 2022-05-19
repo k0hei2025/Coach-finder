@@ -19,6 +19,34 @@
         checked
         v-on:change="checkHandler"
       />
+      <label for="MachineLearning">STEM</label>
+      <input
+        type="checkbox"
+        id="MachineLearning"
+        checked
+        v-on:change="checkHandler"
+      />
+      <label for="MachineLearning">Performing Arts/Visual Arts</label>
+      <input
+        type="checkbox"
+        id="MachineLearning"
+        checked
+        v-on:change="checkHandler"
+      />
+      <label for="MachineLearning">Sports</label>
+      <input
+        type="checkbox"
+        id="MachineLearning"
+        checked
+        v-on:change="checkHandler"
+      />
+      <label for="MachineLearning">Others</label>
+      <input
+        type="checkbox"
+        id="MachineLearning"
+        checked
+        v-on:change="checkHandler"
+      />
       <label for="MachineLearning">Machine Learning</label>
     </div>
   </div>

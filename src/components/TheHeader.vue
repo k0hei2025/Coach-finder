@@ -2,7 +2,7 @@
   <header class="buttonList">
     <nav>
       <router-link style="text-decoration: none; color: inherit" to="/"
-        ><h1 class="iconLogo">MENTOR</h1></router-link
+        ><h1 class="iconLogo">MENTOR HUNT</h1></router-link
       >
       <ul>
         <!-- <li class="list_2">Be a Mentor</li> -->
@@ -13,7 +13,10 @@
           to="/requests"
           ><li>Requests</li></router-link
         >
-        <router-link v-else style="text-decoration: none" to="/coaches"
+        <router-link
+          v-if="!isAMentor"
+          style="text-decoration: none"
+          to="/coaches"
           ><li>Find a Mentor</li></router-link
         >
 
@@ -30,7 +33,7 @@
           style="text-decoration: none"
           to="/teacherProfile"
         >
-          <li class="list_1">{{ this.profileName }}</li></router-link
+          <li class="list_1">User</li></router-link
         >
       </ul>
     </nav>
@@ -93,7 +96,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['authenticatedData', 'getUserData']),
+    ...mapGetters(['authenticatedData', 'getUserData', 'isAMentor']),
   },
   async created() {
     const data = await fetch(
@@ -109,6 +112,7 @@ export default {
 
     logoutHandler() {
       this.authenticatedData.localId = null;
+      this.authenticatedData.tokenId = null;
       alert('logout');
     },
   },

@@ -21,6 +21,9 @@ export default {
                isOurUser(state) {
                               return state.isOurUser
                },
+               isDeleted(state) {
+                              return state.isDeleted
+               },
                isAMentor(state) {
                               return state.isMentor
                },

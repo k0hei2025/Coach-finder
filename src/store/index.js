@@ -36,8 +36,8 @@ const store = createStore({
       isOurUser: false,
       isMentor: false,
 
-      profileData: {}
-
+      profileData: {},
+      isDeleted: false
     }
 
   },

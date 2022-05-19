@@ -1,40 +1,47 @@
 export default {
   async actionAddCoachHandler(context, refObject) {
-
-    if (refObject.firstName !== '' && refObject.lastName !== '' && refObject.description !== '' && refObject.areas !== [] && refObject.HourlyRate !== 0 && refObject.HourlyRate > 0) {
-
-      const coachData = {
-        id: new Date().getTime(),
-        firstName: refObject.firstName,
-        lastName: refObject.lastName,
-        description: refObject.description,
-        areas: refObject.areas,
-        HourlyRate: refObject.HourlyRate,
-        phoneNumber: refObject.phoneNumber,
-        email: refObject.email,
-        country: refObject.country,
-        state: refObject.state,
-        qualification: refObject.qualification,
-        userId: context.state.authenticateInformation.localId
-      }
-
-      console.log('id coach', coachData.id)
-      console.log('form data', refObject, context.state.authenticateInformation, 'datatata')
-
-      const data = await fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/coaches/${context.state.authenticateInformation.localId}.json`, {
-        method: 'PATCH',
-        body: JSON.stringify(coachData),
-      })
-      const resData = await data.json();
-      console.log('httpData', resData)
-      if (data.ok) {
-        const resData = await data.json();
-        console.log(resData)
-      } else {
-        console.log('error')
-      }
-      context.commit('addCoachHandler', coachData)
+    const coachData = {
+      id: new Date().getTime(),
+      firstName: refObject.firstName,
+      lastName: refObject.lastName,
+      description: refObject.description,
+      areas: refObject.areas,
+      HourlyRate: refObject.HourlyRate,
+      phoneNumber: refObject.phoneNumber,
+      email: refObject.email,
+      country: refObject.country,
+      state: refObject.state,
+      qualification: refObject.qualification,
+      userId: context.state.authenticateInformation.localId
     }
+
+    if (context.state.isMentor) {
+      if (refObject.firstName !== '' && refObject.lastName !== '' && refObject.description !== '' && refObject.areas !== [] && refObject.HourlyRate !== 0 && refObject.HourlyRate > 0) {
+
+
+        console.log('id coach', coachData.id)
+        console.log('form data', refObject, context.state.authenticateInformation, 'datatata')
+
+        const data = await fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/${context.state.isMentor ? 'coaches' : 'students'}/${context.state.authenticateInformation.localId}.json`, {
+          method: 'PATCH',
+          body: JSON.stringify(coachData),
+        })
+        const resData = await data.json();
+        console.log('httpData', resData)
+        if (data.ok) {
+          const resData = await data.json();
+          console.log(resData)
+        } else {
+          console.log('error')
+        }
+        context.commit('addCoachHandler', coachData)
+        if (context.authenticateInformation.token !== null) {
+          alert('sended successfully !!!')
+
+        }
+      }
+    }
+
 
   },
   async getCoachList() {
@@ -66,7 +73,8 @@ export default {
     const contactData = {
       id: new Date().getTime(),
       email: data.email,
-      message: data.message
+      message: data.message,
+      localId: context.state.authenticateInformation.localId
     }
     console.log(`at action`, data)
 
@@ -95,5 +103,17 @@ export default {
       context.state.profileData.country = resData[i].country;
       context.state.profileData.city = resData[i].city;
     }
+  },
+  async deleteDataHandler(context) {
+    console.log(context.state.authenticateInformation.localId, 'userId at delteDataHandler')
+    const data = await fetch(`https://coach-finder-5a7ed-default-rtdb.firebaseio.com/${context.isMentor ? `coaches` : `students`}/${context.state.authenticateInformation.localId
+      }.json`, {
+      method: "DELETE",
+    })
+    const resData = await data.json();
+    console.log(resData, 'data was deleted successfully', context.state.authenticateInformation.localId);
+    context.state.isDeleted = true;
+
   }
+
 }

@@ -7,7 +7,9 @@
         Refresh
       </base-button>
       <router-link to="/register" style="textdecoration: none">
-        <base-button mode="inline"> Register As A Coach </base-button>
+        <base-button v-if="isAMentor" mode="inline">
+          Register As A Coach
+        </base-button>
       </router-link>
     </div>
     <ul>
@@ -75,7 +77,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getCoaches']),
+    ...mapGetters(['getCoaches', 'isAMentor']),
 
     filteredCoaches() {
       return this.getCoaches.filter((i) => {

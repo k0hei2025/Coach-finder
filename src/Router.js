@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound.vue'
 import Authentication from './pages/Authentication/index'
 import Home from './pages/home/home.vue'
 import TeacherProfile from './pages/Profile/MyProfile.vue'
+import StudentRegistrationForm from './components/StudentRegistrationForm.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -29,7 +30,8 @@ const router = createRouter({
     { path: '/register', component: CoachRegister },
     { path: '/:notFound(.*)', component: NotFound },
     { path: '/auth', component: Authentication },
-    { path: '/teacherProfile', component: TeacherProfile }
+    { path: '/teacherProfile', component: TeacherProfile },
+    { path: '/register_student', component: StudentRegistrationForm }
 
   ]
 })
